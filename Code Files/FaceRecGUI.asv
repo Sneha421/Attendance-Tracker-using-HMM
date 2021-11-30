@@ -119,7 +119,7 @@ pstmt = databasePreparedStatement(conn, ins_query);
 
 selection = [1, 2, 3];
 
-curr_date = string(datestr(now, 'yyyy-mm-dd HH:MM:SS'))
+curr_date = string(datetime(yyyymmdd(datetime('today')), 'ConvertFrom', 'yyyymmdd', 'Format','yyyy-MM-dd'))
 
 values = {string(stud_res.stud_id), curr_date, '1'};
 
@@ -129,9 +129,11 @@ stud_name = string(myDatabase{1,p});
 
 pstmt = bindParamValues(pstmt,selection,values);
 
-execute(conn, pstmt);
+execute(conn, pstmt)
 
-set(handles.view_att,'visible','on');
+set(handles.view_att,'visible','on')
+
+
 
 
 % --- Executes on button press in upload_image.
@@ -184,7 +186,13 @@ fetch_query = ['select stud_info.stud_id, stud_info.stud_name, stud_info.stud_cl
                'inner join att_info on stud_info.stud_id = att_info.stud_id '...
                'where stud_info.stud_id = '];
 
-table_ = fetch(conn, strcat(fetch_query, num2str(stud_id)));
+table_ = fetch(conn, strcat(fetch_query, num2str(stud_id)))
 
 f = uifigure('Name',strcat('Attendance For', {' '}, stud_name), 'AutoResizeChildren', 'on', 'Resize', 'on');
-uit = uitable(f, 'Data', table_, 'Position', [25 200 500 200]);
+uit = uitable(f, 'Data', table_, 'ColumnWidth','fit' 'Position', [25 200 500 200]);
+
+% table_extent = get(uit,'Extent');
+% set(uit,'Position',[1 1 table_extent(3) table_extent(4)])
+% figure_size = get(f,'outerposition');
+% desired_fig_size = [figure_size(1) figure_size(2) table_extent(3)+15 table_extent(4)+65];
+% set(f,'outerposition', desired_fig_size);
