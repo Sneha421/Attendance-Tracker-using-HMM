@@ -1,5 +1,5 @@
 # Attendance-Tracker-using-HMM
-This project implements an Attendance Tracking System using Face Recognition with HMM
+This project implements an Attendance Tracking System using Face Recognition with HMM.
 
 ## Team
 1) [Dipshikha Biswas](https://github.com/dipshikha461) - GUI Implementation and Live Image Capture
