@@ -96,7 +96,7 @@ opts = setoptions(opts, ...
     'PortNumber',3306);
 % 
 username = "root";
-password = "SqNSun@@sqMuMy3905";
+password = ""; % enter SQL connection password
 status = testConnection(opts,username,password);
 saveAsDataSource(opts)
 
